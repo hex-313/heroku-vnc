@@ -4,7 +4,7 @@
   "keywords": ["VNC", "Docker"],
   "env": {
   },
-  "buildpacks": [
-        {"url": "https://github.com/hex-313/rchbp"}
-    ]
-} 
+  "website": "",
+  "repository": "",
+  "stack": "container"
+ }
