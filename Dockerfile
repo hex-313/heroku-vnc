@@ -54,7 +54,7 @@ RUN dpkg-reconfigure locales
 
 RUN sudo apt-get update && sudo apt-get install -y obs-studio
 RUN sudo apt-get install -y mkvtoolnix mkvtoolnix-gui
-RUN sudo apt-get install -y mediainfo
+RUN sudo apt-get install -y mediainfo mediainfo-gui
 
 COPY . /app
 RUN chmod +x /app/conf.d/websockify.sh
@@ -69,7 +69,6 @@ RUN apt-key add /app/linux_signing_key.pub
 RUN set -ex; \
     apt-get update \
     && apt-get install -y --no-install-recommends \
-        google-chrome-stable \
 	anydesk
 
 
