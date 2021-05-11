@@ -29,6 +29,7 @@ RUN set -ex; \
         wget \
         g++ \
 	unzip \
+        unrar \
         ssh \
 	ffmpeg \
 	chromium-browser \
@@ -46,6 +47,7 @@ RUN set -ex; \
 	ibus-gtk3 \
 	ibus-qt4 \
 	openssh-server \
+    && apt-get install mkvtoolnix mkvtoolnix-gui \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
