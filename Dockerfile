@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get upgrade
 
-RUN sudo apt-get install mkvtoolnix mkvtoolnix-gui
+RUN sudo apt-get install mkvtoolnix
 RUN set -ex; \
     apt-get update \
     && apt-get install -y --no-install-recommends \
