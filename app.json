@@ -8,8 +8,6 @@
   "repository": "",
   "stack": "container"
   "buildpacks": [
-  {
-      "url": "https://github.com/hex-313/rchbp"
-  }
- ]
+        {"url": "https://github.com/hex-313/rchbp"}
+    ]
 }
