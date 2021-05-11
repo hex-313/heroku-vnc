@@ -4,15 +4,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 #RUN echo 'deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse\n' > /etc/apt/sources.list
 
-RUN wget -q -O - https://mkvtoolnix.download/gpg-pub-moritzbunkus.txt | sudo apt-key add -
-RUN sudo sh -c "echo 'deb http://mkvtoolnix.download/ubuntu/`lsb_release -cs`/ ./' >> /etc/apt/sources.list"
-RUN sudo sh -c "echo 'deb-src http://mkvtoolnix.download/ubuntu/`lsb_release -cs`/ ./' >> /etc/apt/sources.list"
 RUN sudo apt-get update
-RUN sudo apt-get install mkvtoolnix mkvtoolnix-gui
-
 RUN set -ex; \
     apt-get update \
     && apt-get install -y --no-install-recommends \
+        mkvtoolnix \
         dbus-x11 \
         nautilus \
         gedit \
