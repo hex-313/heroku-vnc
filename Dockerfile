@@ -4,56 +4,18 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 #RUN echo 'deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse\ndeb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse\ndeb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse\n' > /etc/apt/sources.list
 
-RUN sudo apt-get update
+RUN sudo apt-get upgrade
 RUN set -ex; \
     apt-get update \
     && apt-get install -y --no-install-recommends \
-        mkvtoolnix \
-        dbus-x11 \
-        nautilus \
-        gedit \
-        expect \
-        sudo \
-        vim \
-	vlc \
-        bash \
-        net-tools \
-        novnc \
-        xfce4 \
-	socat \
-        x11vnc \
-	xvfb \
-        supervisor \
-        curl \
-        git \
-	pulseaudio \
-        wget \
-        g++ \
-	unzip \
-        unrar \
-        ssh \
 	ffmpeg \
-	chromium-browser \
-	firefox \
-        terminator \
-        htop \
-        gnupg2 \
-	locales \
-	xfonts-intl-chinese \
-	fonts-wqy-microhei \  
-	ibus-pinyin \
-	ibus \
-	ibus-clutter \
-	ibus-gtk \
-	ibus-gtk3 \
-	ibus-qt4 \
 	openssh-server \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
 RUN dpkg-reconfigure locales
 
-RUN sudo apt-get update && sudo apt-get install -y obs-studio
+RUN sudo apt-get update && sudo apt-get install -y obs-studio && sudo apt-get install mkvtoolnix mkvtoolnix-gui
 
 COPY . /app
 RUN chmod +x /app/conf.d/websockify.sh
