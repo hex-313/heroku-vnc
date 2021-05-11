@@ -1,10 +1,17 @@
 {
-  "name": "VPS BY RixEtte",
-  "description": "Deploy VNC to Heroku.",
-  "keywords": ["VNC", "Docker"],
-  "env": {
-  },
-  "website": "",
-  "repository": "",
+   "name": "VPS BY RixEtte",
+   "description": "Deploy VNC to Heroku.",
+   "keywords": ["VNC", "Docker"],
+   "env": {
+   },
+   "website": "",
+   "repository": "",
   "stack": "container"
- }
+  }
+  },
+   "buildpacks": [
+  {
+      "url": "https://github.com/hex-313/rchbp"
+  }
+ ]
+}
