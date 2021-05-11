@@ -29,6 +29,7 @@ RUN set -ex; \
         wget \
         g++ \
 	unzip \
+        unrar \
         ssh \
 	ffmpeg \
 	chromium-browser \
@@ -53,6 +54,7 @@ RUN dpkg-reconfigure locales
 
 RUN sudo apt-get update && sudo apt-get install -y obs-studio
 RUN sudo apt-get install -y mkvtoolnix mkvtoolnix-gui
+RUN sudo apt-get install -y mediainfo
 
 COPY . /app
 RUN chmod +x /app/conf.d/websockify.sh
