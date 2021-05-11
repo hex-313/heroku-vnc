@@ -8,14 +8,14 @@ RUN apt-get upgrade
 RUN set -ex; \
     apt-get update \
     && apt-get install -y --no-install-recommends \
-	ffmpeg \
-	openssh-server \
+        ffmpeg \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
 RUN dpkg-reconfigure locales
 
-RUN sudo apt-get update && sudo apt-get install -y obs-studio && sudo apt-get install mkvtoolnix mkvtoolnix-gui
+RUN sudo apt-get update && sudo apt-get install -y obs-studio
+RUN sudo apt-get install mkvtoolnix mkvtoolnix-gui
 
 COPY . /app
 RUN chmod +x /app/conf.d/websockify.sh
