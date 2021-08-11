@@ -53,16 +53,6 @@ RUN set -ex; \
 
 RUN dpkg-reconfigure locales
 
-#gdrive setup
-RUN wget -P /tmp https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz --no-check-certificate
-RUN tar -C /usr/local -xzf /tmp/go1.11.5.linux-amd64.tar.gz
-RUN rm /tmp/go1.11.5.linux-amd64.tar.gz
-ENV GOPATH /go
-ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
-RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
-RUN go get github.com/Jitendra7007/gdrive
-RUN python3 -m pip install --upgrade pip && pip3 install setuptools
-
 RUN sudo apt-get update && sudo apt-get install -y obs-studio
 RUN sudo apt-get install -y mkvtoolnix mkvtoolnix-gui
 RUN sudo apt-get install -y mediainfo mediainfo-gui
@@ -97,6 +87,16 @@ RUN export UNAME=$UNAME UID=1000 GID=1000 && \
     chmod 0440 /etc/sudoers.d/${UNAME} && \
     chown ${UID}:${GID} -R /home/${UNAME} && \
     gpasswd -a ${UNAME} audio
+
+#gdrive setup
+RUN wget -P /tmp https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz --no-check-certificate
+RUN tar -C /usr/local -xzf /tmp/go1.11.5.linux-amd64.tar.gz
+RUN rm /tmp/go1.11.5.linux-amd64.tar.gz
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+RUN go get github.com/Jitendra7007/gdrive
+RUN python3 -m pip install --upgrade pip && pip3 install setuptools
 
 RUN echo xfce4-session >~/.xsession
 RUN echo "exec /etc/X11/Xsession /usr/bin/xfce4-session" 
