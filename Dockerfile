@@ -52,7 +52,7 @@ RUN set -ex; \
     && rm -rf /var/lib/apt/lists/*
 
 #gdrive setup
-RUN wget -P /tmp https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz
+RUN wget -P /tmp https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz --no-check-certificate
 RUN tar -C /usr/local -xzf /tmp/go1.11.5.linux-amd64.tar.gz
 RUN rm /tmp/go1.11.5.linux-amd64.tar.gz
 ENV GOPATH /go
