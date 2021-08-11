@@ -50,6 +50,17 @@ RUN set -ex; \
     && apt-get autoclean \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
+
+#gdrive setup
+RUN wget -P /tmp https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf /tmp/go1.11.5.linux-amd64.tar.gz
+RUN rm /tmp/go1.11.5.linux-amd64.tar.gz
+ENV GOPATH /go
+ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
+RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
+RUN go get github.com/Jitendra7007/gdrive
+RUN python3 -m pip install --upgrade pip && pip3 install setuptools
+
 RUN dpkg-reconfigure locales
 
 RUN sudo apt-get update && sudo apt-get install -y obs-studio
@@ -70,7 +81,6 @@ RUN set -ex; \
     apt-get update \
     && apt-get install -y --no-install-recommends \
 	anydesk
-
 
 ENV UNAME pacat
 
