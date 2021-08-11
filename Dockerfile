@@ -51,6 +51,8 @@ RUN set -ex; \
     && apt-get autoremove \
     && rm -rf /var/lib/apt/lists/*
 
+RUN dpkg-reconfigure locales
+
 #gdrive setup
 RUN wget -P /tmp https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz --no-check-certificate
 RUN tar -C /usr/local -xzf /tmp/go1.11.5.linux-amd64.tar.gz
@@ -60,8 +62,6 @@ ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 RUN mkdir -p "$GOPATH/src" "$GOPATH/bin" && chmod -R 777 "$GOPATH"
 RUN go get github.com/Jitendra7007/gdrive
 RUN python3 -m pip install --upgrade pip && pip3 install setuptools
-
-RUN dpkg-reconfigure locales
 
 RUN sudo apt-get update && sudo apt-get install -y obs-studio
 RUN sudo apt-get install -y mkvtoolnix mkvtoolnix-gui
